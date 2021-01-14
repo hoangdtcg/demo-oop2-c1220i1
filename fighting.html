@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Va Chạm</title>
+    <script src="Human.js"></script>
+</head>
+<body>
+<img src="" alt="" id="dao-avt">
+Đào: <p id="dao-hp">100</p>
+
+<img src="" alt="" id="duong-avt">
+Dương: <p id="duong-hp">100</p>
+<button onclick="attack(dao,duong)">Đào Attack</button>
+<button onclick="attack(duong,dao)">Dương Attack</button>
+<script>
+    let dao = new Human("Đào");
+    let duong = new Human("Dương");
+    duong.avt = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBVizFMhQmaB3YYFi3b8-3njLBDyFY8TCQRg&usqp=CAU";
+
+    function attack(human1,human2) {
+        human1.attack(human2);
+        display();
+    }
+
+    display();
+
+    function display() {
+        document.getElementById('dao-hp').innerHTML = dao.hp;
+        document.getElementById('duong-hp').innerHTML = duong.hp;
+        document.getElementById('dao-avt').src = dao.avt;
+        document.getElementById('duong-avt').src = duong.avt;
+    }
+</script>
+</body>
+</html>

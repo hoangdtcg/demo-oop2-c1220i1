@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Funny Circle 2</title>
+    <script src="Circle.js"></script>
+</head>
+<body>
+<canvas id="canvas1" width="400px" height="400px" style="background-color: pink"></canvas>
+<canvas id="canvas2" width="400px" height="400px" style="background-color: violet"></canvas>
+</body>
+<script>
+    // let canvas1 = document.getElementById('canvas1');
+    // let canvas2 = document.getElementById('canvas2');
+    let circle = new Circle(100, 100, 40);
+    circle.setColor("green");
+    // circle.render(canvas2);
+    let canvasName = "canvas1";
+    function moveCircle() {
+
+        let canvas = document.getElementById(canvasName);
+        let ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (circle.x + circle.radius >= canvas.width) {
+            circle.direct = 'left';
+            canvasName = 'canvas2';
+
+        }
+
+        if (circle.x - circle.radius <= 0) {
+            circle.direct = 'right';
+            canvasName = 'canvas1';
+
+        }
+
+        console.log(circle.direct);
+        switch (circle.direct) {
+            case "left":
+                circle.moveLeft();
+                break;
+            case 'right':
+                circle.moveRight();
+                break;
+        }
+
+        circle.render(canvas);
+
+    }
+
+    let run = setInterval(moveCircle, 10);
+</script>
+</html>
